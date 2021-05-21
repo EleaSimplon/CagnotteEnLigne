@@ -1,0 +1,28 @@
+
+{{ form_start(form) }}
+
+    {% if not inputValue %}
+        {{ form_label(form.amount) }}
+        {{ form_widget(form.amount) }}
+        
+    {% else %}
+        {{ form_label(form.amount) }}
+        {{ form_widget(form.amount, {'attr' :  {'value' : inputValue } }) }}
+       
+    {% endif %}
+
+        {{ form_row(form.participantId.name) }}
+        {{ form_row(form.participantId.email) }}
+        <label>
+            {{ form_widget(form.participantId.isAnonymous) }}
+            <span>Masquer le montant de ma participation auprès des autres participants</span>
+        </label>
+        
+        <div class="input-field col s12">
+            <div id="card-element"></div>
+        </div>
+
+
+    <button class="btn">{{ button_label|default('Participer') }}</button>
+
+{{ form_end(form) }}
