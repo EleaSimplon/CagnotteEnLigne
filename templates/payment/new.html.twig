@@ -4,6 +4,7 @@
 
 {% block body %}
 
+    {# ************** SECTION CONTAINER HEADER IMG **************#}
     <div class="parallax-container valign-wrapper">
         <div class="section no-pad-bot">
             <div class="container">
@@ -13,16 +14,9 @@
                 </div>
             </div>
         </div>
-        <div class="parallax"><img src="{{ asset('assets/images/8.jpg') }}" alt="Titre de la campagne"></div>
-    </div>
-
-    <div class="container">
-    
-        <h1>Create new Payment</h1>
-
-        {{ include('payment/_form.html.twig') }}
-
-        <a href="{{ path ('campaign_show',  {'id' : campaign.id}) }}">back to list</a>
+        <div class="parallax">
+            <img style="width:100%" src="{{ asset('assets/images/thanks.jpg') }}" alt="Titre de la campagne">
+        </div>
     </div>
 
     <div class="container">
@@ -36,62 +30,14 @@
             <div class="card">
                 <div class="card-content">
                     <div class="row">
-                        <form>
-                            <h5 class="center">Votre identité</h5>
-                            <div class="input-field col s12 l6">
-                                <input id="email" type="email" class="validate">
-                                <label for="email">Votre Email</label>
-                            </div>
-                            <div class="input-field col s12 l6">
-                                <input id="mount" type="number" class="validate">
-                                <label for="mount">Votre participation</label>
-                            </div>
-                            {# <p>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>Masquer mon identité auprès des autres participants</span>
-                                </label>
-                            </p> #}
-                            <p>
-                                <label>
-                                    <input type="checkbox" />
-                                    <span>Masquer le montant de ma participation auprès des autres participants</span>
-                                </label>
-                            </p>
-                            <div class="clearfix"></div>
-                            <h5 class="center">Paiement</h5>
-                            <div class="input-field col s12">
-                                <input id="card_name" type="text" class="validate">
-                                <label for="card_name">Nom sur la carte</label>
-                            </div>
-                            <div class="input-field col s12">
-                                <input id="card_number" type="text" class="validate">
-                                <label for="card_number">Numéro de la carte</label>
-                            </div>
-                            <div class="input-field col s12 l8">
-                                <input id="card_expiration_date" type="date" class="validate">
-                                <label for="card_expiration_date">Date d'expiration</label>
-                            </div>
-                            <div class="input-field col s12 l4">
-                                <input id="card_cvv" type="text" class="validate">
-                                <label for="card_cvv">CVV</label>
-                            </div>
-                            <div class="input-field col s12 l6">
-                                <a href="#!" class="btn btn-large waves-effect waves-light grey col s12">Annuler</a>
-                            </div>
-                            <div class="input-field col s12 l6">
-                                <button class="btn btn-large waves-effect waves-light pink lighten-1 col s12" type="submit" name="action">
-                                    {{ button_label|default('Save') }}
-                                    <i class="material-icons right">euro_symbol</i>
-                                </button>
-                            </div>
-                        </form>
+                        {{ include('payment/_form.html.twig') }}
                     </div>
                 </div>
             </div>
         </div>
     </div>
     
+    {# ************** SECTION CONTAINER COMMENT CA MARCHE **************#}
     <div class="container">
         <div class="section">
             <div class="row">

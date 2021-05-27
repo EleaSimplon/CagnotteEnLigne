@@ -57,10 +57,8 @@ footer.page-footer .footer-links{
     line-height: 2rem;
 }
 
-
-
-
 /**/
+
 .parallax-container.hero-banner {
     min-height: 480px;
 }
@@ -87,10 +85,10 @@ footer.page-footer .footer-links{
     height: 10px;
 }
 .carousel .indicators .indicator-item{
-    background-color: rgba(0,150,136,.5);
+    background-color: #ff8a65;
 }
 .carousel .indicators .indicator-item.active{
-    background-color: #009688;
+    background-color: #f4511e;
 }
 .progress-section .progress{
     height: 30px;

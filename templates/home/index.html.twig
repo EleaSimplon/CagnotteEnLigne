@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Paye ton pote !{% endblock %}
+{% block title %}Cagnot'Potes!{% endblock %}
 
 {% block body %}
 <style>
@@ -8,7 +8,8 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
- <div class="parallax-container hero-banner valign-wrapper">
+    {# ************** SECTION CONTAINER HEADER + NEW CAMPAIGN **************#}
+    <div class="parallax-container hero-banner valign-wrapper">
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="hide-on-med-and-down">
@@ -25,25 +26,27 @@
                 <div class="row">
                     <div class="card col s12 m12 l8 offset-l2">
                         <div class="card-content">
-                            <div class="input-field col s12 l8">
-                                <form action="{{ path('campaign_new') }}" method="POST">
+                            <form action="{{ path('campaign_new') }}" method="POST">
+                                <div class="input-field col s12 l8">
                                     <input id="cag_name" type="text" name="name" class="validate">
                                     
                                     <label for="cag_name">Nommez votre nouvelle campagne</label>
-
-                                    <button type="submit" class="btn-large waves-effect waves-light pink lighten-1 col s12 l4">Valider</button>
-                                </form>
-                            </div>
+                                </div>
+                                    <button type="submit" class="btn-large waves-effect waves-light deep-orange lighten-1 col s12 l4">Valider<i class="material-icons right">send</i></button>
+                            </form>
                         </div>
                     </div>
                 </div>
-                <br><br>
-
             </div>
         </div>
-        <div class="parallax"><img src="{{ asset('assets/images/11.jpg') }}" alt="Anniversaire, pot de départ, crémaillère... N'avancez plus les frais !"></div>
+
+        <div class="parallax">
+            <img style="width:100%" src="{{ asset('assets/images/home.jpg') }}" alt="Anniversaire, pot de départ, crémaillère... N'avancez plus les frais !">
+        </div>
+
     </div>
 
+    {# ************** SECTION CONTAINER COMMENT CA MARCHE **************#}
     <div class="container">
         <div class="section">
             <div class="row">
@@ -55,15 +58,15 @@
             <div class="row">
                 <div class="col s12 m4">
                     <div class="icon-block center">
-                        <a class="btn-large btn-floating white" href="{{ path('campaign_new') }}"><i class="material-icons teal-text">create</i></a>
+                        <a class="btn-large btn-floating white" href="{{ path('campaign_new') }}"><i class="material-icons green-text">create</i></a>
                         <h5 class="center">Créez</h5>
                         <p class="light">et personnalisez votre campagne commune en 30 secondes !</p>
                     </div>
                 </div>
 
-                <div class="col s12 m4">
+                <div class="col  m4 s12">
                     <div class="icon-block center">
-                        <div class="btn-large btn-floating white"><i class="material-icons teal-text">wc</i></div>
+                        <div class="btn-large btn-floating white"><i class="material-icons green-text">group_add</i></div>
                         <h5 class="center">Invitez</h5>
                         <p class="light">vos amis en utilisant les réseaux sociaux, mail, etc.</p>
                     </div>
@@ -71,7 +74,7 @@
 
                 <div class="col s12 m4">
                     <div class="icon-block center">
-                        <div class="btn-large btn-floating white"><i class="material-icons teal-text">shopping_cart</i></div>
+                        <div class="btn-large btn-floating white"><i class="material-icons green-text">euro_symbol</i></div>
                         <h5 class="center">Collectez</h5>
                         <p class="light">et utilisez l'argent comme bon vous semble avec vos amis.</p>
                     </div>
@@ -81,6 +84,7 @@
         </div>
     </div>
 
+    {# ************** PARALLAX IMG **************#}
     <div class="parallax-container valign-wrapper">
         <div class="section no-pad-bot">
             <div class="container">
@@ -89,9 +93,12 @@
                 </div>
             </div>
         </div>
-        <div class="parallax"><img src="{{ asset('assets/images/10.jpg') }}" alt="Une campagne pensée pour vous"></div>
+        <div class="parallax">
+            <img style="width:100%" src="{{ asset('assets/images/girlz.jpg') }}" alt="Une campagne pensée pour vous">
+        </div>
     </div>
 
+    {# ************** SECTION CAROUSEL CAMPAIGN **************#}
     <div class="container">
         <div class="section">
 
@@ -108,8 +115,8 @@
 
                             <a class="carousel-item" href="{{ path('campaign_show', {'id': campaign.id}) }}">
                                 <div class="card center">
-                                    <div class="card-content">
-                                        <span class="card-title teal-text">{{ campaign.campaignName }}</span>
+                                    <div class="card-content"  style="height:200px">
+                                        <span class="card-title green-text">{{ campaign.campaignName }}</span>
                                         <p class="black-text">{{ campaign.campaignContent }}</p>
                                     </div>
                                     <div class="card-action">
@@ -134,18 +141,19 @@
 
                                                 {% set porcentAmount = totalAmount * 100 / campaign.campaignGoal %}
 
-                                                <i class="material-icons teal-text">account_circle</i> <b>{{ count }}</b>
+                                                <i class="material-icons green-text">account_circle</i> <b>{{ count }}</b>
                                                
 
                                             </div>
                                             <div class="col s6">
-                                                <i class="material-icons teal-text">euro_symbol</i> <b>{{ campaign.campaignGoal }}</b>
+                                                <i class="material-icons green-text">euro_symbol</i> <b>{{ campaign.campaignGoal }}</b>
                                             </div>
                                         </div>
 
                                     </div>
-                                    <div class="progress">
-                                        <div class="determinate" style="width: {{porcentAmount}}%"></div>
+                                    <div class="progress deep-orange lighten-3">
+                                        <div class="determinate deep-orange lighten-1" style="width: {{porcentAmount}}%">
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -158,4 +166,14 @@
 
         </div>
     </div>
+
+    {# ************** BTN LIST CAMPAIGN **************#}
+    <div class="container">
+        <div class="card col s12 m12 l8 offset-l2">
+            <div class="card-content center">
+                <a href="{{ path('campaign_index') }}" type="submit" class="btn-large waves-effect waves-light deep-orange lighten-1 col s12 l4">Voir les autres campagnes<i class="material-icons right">format_list_bulleted</i></a>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}

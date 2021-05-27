@@ -1,17 +1,105 @@
-{{ form_start(form) }}
+{# *********** FORM EDIT *********** #}
+{% if formEdit is defined %}
 
-{% if not inputValue %}
-    {{ form_row(form.campaignName) }}
-{% else %}
-    {{ form_row(form.campaignName, {'attr' :  {'value' : inputValue } 
-    }) }}
+    {{ form_start(formEdit) }}
+
+        {% if not inputValue %}
+            {{ form_label(formEdit.campaignName, 'Nom de la campagne')}}
+            {{ form_widget(formEdit.campaignName) }}
+        {% else %}
+            {{ form_label(formEdit.campaignName, 'Nom de la campagne')}}
+            {{ form_row(formEdit.campaignName, {'attr' :  {'value' : campaign.campaignName } 
+            }) }}
+        {% endif %}
+
+        {{ form_label(formEdit.campaignContent, 'Description')}}
+        {{ form_widget(formEdit.campaignContent, {'attr' : {'class' : 'materialize-textarea'}}) }}
+
+        {{ form_label(formEdit.campaignGoal, 'Ojectif')}}
+        {{ form_widget(formEdit.campaignGoal) }}
+
+        {{ form_label(formEdit.name, 'Nom')}}
+        {{ form_widget(formEdit.name , {'attr' :  {'value' : userName } 
+        }) }}
+
+        {{ form_label(formEdit.email, 'Email')}}
+        {{ form_widget(formEdit.email, {'attr' :  {'value' : userMail } 
+        }) }}
+    
+
+        {# VERIF SI LA ROUTE EST "CAMPAIGN_EDIT" AFFICHER IMG #}
+        {% if app.request.attributes.get('_route') == 'campaign_edit' %}
+
+            <h3>Vos images</h3>
+            {% for image in images %}
+                <div>
+                    <img src="{{ asset('assets/images/' ~ image.name)}}" alt="ImageCampaign" width="150">
+                    <a href="{{ path('campaign_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+                </div>
+            {% endfor %}
+
+        {% endif %}
+
+        <div class="file-field input-field">
+                <div class="btn">
+                    <span>File</span>
+                    {{ form_widget(formEdit.images, {'attr': {'multiple': true} }) }}
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="2 images maximum">
+                </div>
+        </div>
+        <button class="btn btn-large waves-effect waves-light deep-orange lighten-1 col s12" style="margin-top: 20px;" type="submit" name="action">
+            Validez la campagne
+            <i class="material-icons right">send</i>
+        </button>
+        
+    {{ form_end(formEdit) }}
 {% endif %}
 
-    {{ form_row(form.campaignContent) }}
-    {{ form_row(form.campaignGoal) }}
-    {{ form_row(form.name) }}
-    {{ form_row(form.email) }}
-    
-    <button class="btn">{{ button_label|default('Save') }}</button>
-    
-{{ form_end(form) }}
+{# *********** FORM CREATE *********** #}
+{% if formCreate is defined %}
+
+    {{ form_start(formCreate) }}
+
+        {% if not inputValue %}
+            {{ form_label(formCreate.campaignName, 'Nom de la campagne')}}
+            {{ form_widget(formCreate.campaignName) }}
+        {% else %}
+            {{ form_label(formCreate.campaignName, 'Nom de la campagne')}}
+            {{ form_widget(formCreate.campaignName, {'attr' :  {'value' : campaign.campaignName } 
+            }) }}
+        {% endif %}
+
+        {{ form_label(formCreate.campaignContent, 'Description')}}
+        {{ form_widget(formCreate.campaignContent, {'attr' : {'class' : 'materialize-textarea'}}) }}
+
+        {{ form_label(formCreate.campaignGoal, 'Ojectif')}}
+        {{ form_widget(formCreate.campaignGoal) }}
+
+        {{ form_label(formCreate.name, 'Nom')}}
+        {{ form_widget(formCreate.name , {'attr' :  {'value' : userName } 
+        }) }}
+
+        {{ form_label(formCreate.email, 'Email')}}
+        {{ form_widget(formCreate.email, {'attr' :  {'value' : userMail } 
+        }) }}
+        
+        {{ form_label(formCreate.images, 'Image de la campagne')}}
+
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>File</span>
+                {{ form_widget(formCreate.images, {'attr': {'multiple': true} }) }}
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text" placeholder="Upload one or more files">
+            </div>
+        </div>
+        <button class="btn btn-large waves-effect waves-light pink lighten-1 col s12" style="margin-top: 20px;" type="submit" name="action">
+            Validez la campagne
+            <i class="material-icons right">send</i>
+        </button>
+        
+    {{ form_end(formCreate) }}
+{% endif %}

@@ -1,27 +1,51 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Campaign{% endblock %}
+{% block title %}Modifier sa campagne{% endblock %}
 
 {% block body %}
 
-    <div class="container">
-        <h1>Edit Campaign</h1>
-
-        <div class="row">
-
-        {{ include('campaign/_form.html.twig', {'button_label': 'Update'}) }}
-
-        <br>
-
-        {{ include('campaign/_delete_form.html.twig') }}
-
-        
-
+ {# ************** SECTION CONTAINER HEADER IMG **************#}
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <h1 class="header center white-text light">{{ campaign.campaignName}}</h1>
+                <div class="row center">
+                    <h5 class="header col s12 light">- Organisée par : {{ campaign.name}} -</h5>
+                </div>
+            </div>
         </div>
-
-        <a class="waves-effect waves-light btn pink lighten-1" href="{{ path('campaign_index') }}">back to list</a>
-
-        <br>
-
+        <div class="parallax">
+            <img style="width:100%" src="{{ asset('assets/images/modify.jpg') }}" alt="Titre de la campagne">
+        </div>
     </div>
+
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12 center">
+                    <h1>Modifier sa campagne</h1>
+                </div>
+            </div>
+            <!--   Form Section   -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+                       {{ include('campaign/_form.html.twig', {'button_label': 'Update'}) }}
+                    </div>
+                     <div class="row">
+            
+                        {{ include('campaign/_delete_form.html.twig') }}
+
+                    </div>
+                    
+                    <a class="waves-effect waves-light btn deep-orange lighten-3" href="{{ path('campaign_index') }}">back to list</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('assets/js/images.js') }}"></script>
 {% endblock %}

@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+
+    {# ************** SECTION CONTAINER HEADER IMG **************#}
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <h1 class="header center white-text light">Créez un compte pour pouvoir créer une cagnotte</h1>
+            </div>
+        </div>
+        <div class="parallax">
+            <img style="width:100%" src="{{asset('assets/images/modify.jpg') }}" alt="Register">
+        </div>
+    </div>
+
+    {# ************** SECTION FORMULAIRE **************#}
+    <div class="container">
+        <div class="section">
+            <div class="row">
+                <div class="col s12 center">
+                    <h4>Créez un compte</h4>
+                </div>
+            </div>
+            <!--   Form Section   -->
+            <div class="card">
+                <div class="card-content">
+                    <div class="row">
+
+                        {{ form_start(registrationForm) }}
+
+                            {{ form_label(registrationForm.userName, 'Nom')}}
+                            {{ form_widget(registrationForm.userName) }}
+
+                            {{ form_row(registrationForm.email) }}
+
+                            {{ form_row(registrationForm.plainPassword, {
+                                label: 'Mot de passe'
+                            }) }}
+                            
+
+                            <button type="submit" class="btn">CREER<i class="material-icons right">add_box</i></button>
+
+                        {{ form_end(registrationForm) }}
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+{% endblock %}

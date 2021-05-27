@@ -1,28 +1,50 @@
+{{ form_start(form, {'attr': {'id': 'payment-form'}}) }}
 
-{{ form_start(form) }}
+    <h5 class="center">Votre identité</h5>
+    <div class="input-field col s12 l6">
+        {{ form_widget(form.participantId.email) }}
+        {{ form_label(form.participantId.email) }}
+    </div>
+    <div class="input-field col s12 l6">
 
-    {% if not inputValue %}
-        {{ form_label(form.amount) }}
-        {{ form_widget(form.amount) }}
+        {% if not inputValue %}
+            {{ form_label(form.amount) }}
+            {{ form_widget(form.amount) }}
+            
+            {% else %}
+                {{ form_label(form.amount) }}
+                {{ form_widget(form.amount, {'attr' :  {'value' : inputValue } }) }}
         
-    {% else %}
-        {{ form_label(form.amount) }}
-        {{ form_widget(form.amount, {'attr' :  {'value' : inputValue } }) }}
-       
-    {% endif %}
+        {% endif %}
 
-        {{ form_row(form.participantId.name) }}
-        {{ form_row(form.participantId.email) }}
+    </div>
+    <p>
         <label>
             {{ form_widget(form.participantId.isAnonymous) }}
-            <span>Masquer le montant de ma participation auprès des autres participants</span>
+            <span>Masquer mon identité et mon payement auprès des autres participants</span>
         </label>
+    </p>
+    <div class="clearfix"></div>
+    <h5 class="center">Payez en toute sécurité avec Stripe</h5>
+    <img style="width:13rem" src="{{ asset('assets/images/stripe.png') }}">
+    <div class="input-field col s12">
         
-        <div class="input-field col s12">
-            <div id="card-element"></div>
-        </div>
+        {{ form_widget(form.participantId.name) }}
+        {{ form_label(form.participantId.name) }}
+    </div>
 
 
-    <button class="btn">{{ button_label|default('Participer') }}</button>
+    <div class="input-field col s12">
+        <div id="card-element"><!--Stripe.js injects the Card Element--></div>
+    </div>
+    <div class="input-field col s12 l6">
+        <a href="{{ path ('campaign_show',  {'id' : campaign.id}) }}" class="btn btn-large waves-effect waves-light grey col s12">Annuler</a>
+    </div>
+    <div class="input-field col s12 l6">
+        <button class="btn btn-large waves-effect waves-light pink lighten-1 col s12" type="submit" name="action">
+            Participer
+            <i class="material-icons right">euro_symbol</i>
+        </button>
+    </div>
 
 {{ form_end(form) }}
