@@ -53,7 +53,7 @@
         </div>
     </section>
 
-    {# ************** SECTION PARTICIPER + ABOUT CAMPAIGN **************#}
+    {# ************** SECTION PARTICIPER + ABOUT CAMPAIGN + LIST **************#}
     <div class="container participe">
         <div class="section">
             <!-- Participation section -->
@@ -66,7 +66,7 @@
                                 <input id="mount" type="number" name="amount" class="validate">
                                 <label for="mount">Votre participation</label>
                             </div>
-                            <button type="submit" class="btn-large waves-effect waves-light deep-orange lighten-1 col s12 l6">Participer</button>
+                            <button type="submit" class="btn-large waves-effect waves-light blue-grey lighten-2 col s12 l6">Participer</button>
                         </div>
                     </div>
 
@@ -82,7 +82,7 @@
                 <div class="col s12 m4">
                     <div class="icon-block center">
 
-                        <div class="btn-large btn-floating white"><i class="material-icons green-text">person</i></div>
+                        <div class="btn-large btn-floating white"><i class="material-icons blue-grey-text">person</i></div>
                         <h3 class="center">{{ count }}</h3>
                         <p class="light">Participants</p>
                     </div>
@@ -90,7 +90,7 @@
 
                 <div class="col s12 m4">
                     <div class="icon-block center">
-                        <div class="btn-large btn-floating white"><i class="material-icons green-text">redeem</i></div>
+                        <div class="btn-large btn-floating white"><i class="material-icons blue-grey-text">redeem</i></div>
                         <h3 class="center">{{ totalAmount }}</h3>
                         <p class="light">euros récoltés</p>
                     </div>
@@ -98,7 +98,7 @@
 
                 <div class="col s12 m4">
                     <div class="icon-block center">
-                        <div class="btn-large btn-floating white"><i class="material-icons green-text">euro_symbol</i></div>
+                        <div class="btn-large btn-floating white"><i class="material-icons blue-grey-text">euro_symbol</i></div>
                         <h3 class="center">{{ campaign.campaignGoal}}</h3>
                         <p class="light">Objectif</p>
                     </div>
@@ -126,49 +126,51 @@
                 </form>
             </div>
             <!-- List -->
-            <div class="row">
-                <div class="col s12 center">
-                    <h4>Liste des participants</h4>
-                </div>
-                <div class="col s12">
-                    <table class="highlight responsive-table">
-                        <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Participation</th>
-                        </tr>
-                        </thead>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12 center">
+                        <h4>Liste des participants</h4>
+                    </div>
+                    <div class="col s12">
+                        <table class="highlight responsive-table">
+                            <thead>
+                            <tr>
+                                <th>Nom</th>
+                                <th>Participation</th>
+                            </tr>
+                            </thead>
 
-                        <tbody>
+                            <tbody>
 
-                        {% for payment in payments %}
+                            {% for payment in payments %}
 
-                        <tr>
-                            <td>{{payment.participantId.name}}</td>
+                            <tr>
+                                <td>{{payment.participantId.name}}</td>
 
-                            {% if payment.participantId.isAnonymous == false %}
+                                {% if payment.participantId.isAnonymous == false %}
 
-                                <td>{{payment.amount}} €</td>
+                                    <td>{{payment.amount}} €</td>
 
-                                {% else %}
+                                    {% else %}
 
-                                <td>Anonymous</td>
+                                    <td>Anonymous</td>
 
-                            {% endif %}
+                                {% endif %}
 
-                        </tr>
+                            </tr>
 
-                        {% else %}
+                            {% else %}
 
-                        <tr>
-                            <td>Payment not found</td>
-                            <td>0€</td>
-                        </tr>
+                            <tr>
+                                <td>Payment not found</td>
+                                <td>0€</td>
+                            </tr>
 
-                        {% endfor %}
+                            {% endfor %}
 
-                        </tbody>
-                    </table>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

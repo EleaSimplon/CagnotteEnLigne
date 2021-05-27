@@ -4,8 +4,19 @@
 
 {% block body %}
 
+    {# ************** SECTION CONTAINER HEADER IMG **************#}
+    <div class="parallax-container valign-wrapper">
+        <div class="section no-pad-bot">
+            <div class="container">
+                <h1 class="header center white-text light">List des Campagnes</h1>
+            </div>
+        </div>
+        <div class="parallax">
+            <img style="width:100%" src="{{asset('assets/images/ny.jpg') }}" alt="Register">
+        </div>
+    </div>
+
     <div class="container">
-        <h1>List des Campagnes</h1>
 
         <table class="table">
             <thead>
@@ -49,7 +60,7 @@
         {# ************** BTN CREATE CAMPAIGN **************#}
         <div class="card col s12 m12 l8 offset-l2">
             <div class="card-content center">
-                <a href="{{ path('campaign_new') }}" type="submit" class="btn-large waves-effect waves-light deep-orange lighten-1 col s12 l4">Create new<i class="material-icons right">add</i></a>
+                <a href="{{ path('campaign_new') }}" type="submit" class="btn-large waves-effect waves-light blue-grey darken-1 col s12 l4">Create new<i class="material-icons right">add</i></a>
             </div>
         </div>
     </div>
