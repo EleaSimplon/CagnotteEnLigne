@@ -103,3 +103,15 @@
         
     {{ form_end(formCreate) }}
 {% endif %}
+
+{% block javascripts %}
+
+    <script>
+    
+    $('.datepicker').datepicker({ // intitiate datepicker for each element with class name "datepicker"
+    minDate: new Date('1970-01-01'), // set minimum date to "self explanatory"
+    maxDate: new Date(), // set maximum date to "today"
+    autoClose: true // [optional] enable date picking on a very small window
+    })
+
+</script>{% endblock %}

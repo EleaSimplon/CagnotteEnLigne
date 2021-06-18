@@ -126,6 +126,7 @@ class CampaignController extends AbstractController
         $imagesRepository = $this->getDoctrine()
                                  ->getRepository(Image::class);
         $images = $imagesRepository->findBy(['campaign' => $campaign], ['id' => 'DESC'], 2);
+        
         if ($form->isSubmitted() && $form->isValid()) {
 
             // RECUP IMAGES TRANSMISES

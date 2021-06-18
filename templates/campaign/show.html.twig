@@ -186,8 +186,7 @@
             </div>
         </div>
         <div class="parallax">
-
-        {# ******* IF CAMPAIGN ! HAVE IMG = DEFAULT IMG *******#}
+            {# ******* IF CAMPAIGN ! HAVE IMG = DEFAULT IMG *******#}
             {% if images|length == 2 %}
                 <img style="width:100%" src="{{asset('assets/images/' ~ images[1].name) }}" alt="Titre de la campagne">
                 {% else %}
